@@ -1,0 +1,6 @@
+SHOCO_SDK_CFG_PROJECT_DIR='/path/to/short-command-repo-clone'
+
+# You probably wouldn't need to modify bellow this line
+SHOCO_SDK_CFG_LICENSE_FILE="$(dirname $SHOCO_SDK_CFG_PROJECT_DIR)/LICENSE"
+SHOCO_SDK_CFG_DOWNLOAD_BASE_URL='https://getshoco.org'
+SHOCO_SDK_CFG_LATEST_VERSION_DATA_URL="$SHOCO_SDK_CFG_DOWNLOAD_BASE_URL/latest"
