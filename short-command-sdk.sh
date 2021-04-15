@@ -83,6 +83,7 @@ _short-command-sdk-build ()
 
     printf "" > $OUTPUT_FILE
     local FILE
+    local DIR
     for FILE in $(find $SHOCO_SDK_CFG_PROJECT_DIR -type f ! -name '. ')
     do
         DIR=$(dirname $FILE)
