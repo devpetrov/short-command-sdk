@@ -1,16 +1,16 @@
 #!/bin/bash
 
-if [ ! -f './config.sh' ]; then
+if [ ! -f "$( cd "$(dirname ${BASH_SOURCE[0]} )" >/dev/null 2>&1 && pwd )/config.sh" ]; then
     echo "Configuration file not found."
     echo "Run cp config.sh.diff config.sh"
     echo "and edit your configuration"
-    exit 1
+    return 1
 fi
 
-. ./config.sh
+. "$( cd "$(dirname ${BASH_SOURCE[0]} )" >/dev/null 2>&1 && pwd )/config.sh"
 
-short-command-sdk () {
-    
+short-command-sdk ()
+{    
     local DO_BUILD=0
     local DO_LOAD=0
 
@@ -41,7 +41,7 @@ short-command-sdk () {
     fi
 }
 
-_short-command-sdk-source()
+_short-command-sdk-source ()
 {
     . "$1"
 
