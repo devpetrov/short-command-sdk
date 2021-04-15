@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ ! -f "$( cd "$(dirname ${BASH_SOURCE[0]} )" >/dev/null 2>&1 && pwd )/config.sh" ]; then
-    echo "Configuration file not found."
-    echo "Run cp config.sh.diff config.sh"
-    echo "and edit your configuration"
+    printf "Configuration file not found.\n"
+    printf "Run cp config.sh.diff config.sh\n"
+    printf "and edit your configuration.\n"
     return 1
 fi
 
@@ -46,10 +46,10 @@ _short-command-sdk-source ()
     . "$1"
 
     if [ 0 -eq "$?" ]; then
-        echo "Build sourced in the current shell."
-        echo "You can test your modifications of Shoco (Short Command)"
+        printf "Build sourced in the current shell.\n"
+        printf "You can test your modifications of Shoco (Short Command)\n"
     else
-        echo "Failed to source latest build."
+        printf "Failed to source latest build.\n"
     fi
 }
 
@@ -60,14 +60,14 @@ _short-command-sdk-build ()
     local OUTPUT_HELPS_DIR="$3"
 
     printf "\nOutput directory:\n"
-    echo "$OUTPUT_DIR"
+    printf "$OUTPUT_DIR\n"
 
     if [ -d $OUTPUT_DIR ]; then
         printf "\nRemoving existing content in the output directory...\n"
         rm -r $OUTPUT_DIR
     fi
 
-    echo "Building..."
+    printf "Building...\n"
 
     if [ ! -d $OUTPUT_DIR ]; then
         mkdir -p $OUTPUT_DIR
@@ -98,5 +98,5 @@ _short-command-sdk-build ()
 
     sed -i "s/___LATEST_VERSION_DATA_URL___/${SHOCO_SDK_CFG_LATEST_VERSION_DATA_URL//\//\\/}/" $OUTPUT_FILE
 
-    echo "Build done."
+    printf "Build done.\n"
 }
