@@ -82,17 +82,11 @@ _short-command-sdk-build ()
     fi
 
     printf "" > $OUTPUT_FILE
+
     local FILE
-    local DIR
     for FILE in $(find $SHOCO_SDK_CFG_PROJECT_DIR -type f ! -name '. ')
     do
-        DIR=$(dirname $FILE)
-        if [ "$DIR" == "$SHOCO_SDK_CFG_PROJECT_DIR/shoco/helps" ]; then
-            cp -f $FILE "$OUTPUT_HELPS_DIR/$(basename -- $FILE)"
-        else
-            cat $FILE >> "$OUTPUT_FILE"
-            printf "\n" >> "$OUTPUT_FILE"
-        fi
+        _short-command-sdk-append-file "$FILE"
     done
 
     cp $SHOCO_SDK_CFG_LICENSE_FILE $OUTPUT_HELPS_DIR/license
@@ -100,4 +94,17 @@ _short-command-sdk-build ()
     sed -i "s/___LATEST_VERSION_DATA_URL___/${SHOCO_SDK_CFG_LATEST_VERSION_DATA_URL//\//\\/}/" $OUTPUT_FILE
 
     printf "Build done.\n"
+}
+
+_short-command-sdk-append-file ()
+{
+    local FILE="$1"
+    local DIR=$(dirname $FILE)
+
+    if [ "$DIR" == "$SHOCO_SDK_CFG_PROJECT_DIR/shoco/helps" ]; then
+        cp -f "$FILE" "$OUTPUT_HELPS_DIR/$(basename -- $FILE)"
+    else
+        sed -r 's/^[[:space:]]*#.*//' "$FILE" >> "$OUTPUT_FILE"
+        printf "\n" >> "$OUTPUT_FILE"
+    fi
 }
