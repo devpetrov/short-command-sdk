@@ -78,11 +78,7 @@ _short-command-sdk-build ()
         mkdir -p $OUTPUT_HELPS_DIR
     fi
 
-    if [ ! -e $OUTPUT_FILE ]; then
-        touch $OUTPUT_FILE
-    fi
-
-    printf "" > $OUTPUT_FILE
+    touch $OUTPUT_FILE
 
     local FILE
     for FILE in $(find $SHOCO_SDK_CFG_PROJECT_DIR -type f ! -name '. ')
