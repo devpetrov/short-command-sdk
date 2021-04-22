@@ -7,6 +7,7 @@ if [ ! -f "$( cd "$(dirname ${BASH_SOURCE[0]} )" >/dev/null 2>&1 && pwd )/config
     return 1
 fi
 
+. "$( cd "$(dirname ${BASH_SOURCE[0]} )" >/dev/null 2>&1 && pwd )/defaults.sh"
 . "$( cd "$(dirname ${BASH_SOURCE[0]} )" >/dev/null 2>&1 && pwd )/config.sh"
 
 short-command-sdk ()
@@ -89,7 +90,7 @@ _short-command-sdk-build ()
         _short-command-sdk-append-file "$FILE"
     done
 
-    cp $SHOCO_SDK_CFG_LICENSE_FILE $OUTPUT_HELPS_DIR/license
+    cp $SHOCO_SDK_CFG_PROJECT_DIR/$SHOCO_SDK_CFG_LICENSE_FILE $OUTPUT_HELPS_DIR/license
 
     sed -i "s/___LATEST_VERSION_DATA_URL___/${SHOCO_SDK_CFG_LATEST_VERSION_DATA_URL//\//\\/}/" $OUTPUT_FILE
 
