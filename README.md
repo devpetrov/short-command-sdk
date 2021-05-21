@@ -8,7 +8,7 @@
 1. In `config.sh` change the value of `SHOCO_SDK_CFG_PROJECT_DIR` to where the [source](https://github.com/chaos-drone/short-command) of Shoco (Short Command) is placed on your file system.
 
 ## Updating
-Just pull the latest from version `origin master` and source it in your shell.
+Just pull the latest version from `origin master` and source it in your shell.
 
 ## Usage
 You may or may not source this SDK in your `.bashrc` file.
